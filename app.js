@@ -12,13 +12,11 @@ const asyncAPICall = (url) => {
 //single Promise
 asyncAPICall('https://swapi.co/api/people/1/')
   .then(data => {
-    console.log(data);
     appContainer.innerHTML = `
       NAME: <br /><strong>${data.name}</strong><br />
       Birth Year: <br /><strong>${data.birth_year}</strong>
     `
   })
-  .catch(err => console.log(err))
 
 /*
 composing Promises
@@ -30,12 +28,15 @@ composing Promises
  const callFirstPromise = asyncAPICall('https://swapi.co/api/people/2/')
 
  callFirstPromise.then((data) => {
-   console.log(data);
    const createdElement = document.createElement('div');
    createdElement.innerHTML = `
    NAME: <br /><strong>${data.name}</strong><br />
    Birth Year: <br /><strong>${data.birth_year}</strong>`
    appContainer.appendChild(createdElement)
-   console.log(appContainer);
-   console.log(createdElement);
+
+   const callSecondPromise = asyncAPICall('https://swapi.co/api/people/3/')
+   const callThirdPromise = asyncAPICall('https://swapi.co/api/people/4/')
+
+   return Promise.all([callSecondPromise, callThirdPromise])
+ }).then((arrayOfReturnedPromises) => {
  })
