@@ -1,4 +1,5 @@
 const appContainer = document.getElementById('app')
+
 const asyncAPICall = (url) => {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
