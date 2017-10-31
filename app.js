@@ -35,6 +35,9 @@ composing Promises
 1. Makes an HTTP call, waits for it to complete, and prints the result;
 2. then makes other two parallel HTTP calls;
 3. When both of them complete, prints their result.
+
+Promise.all = (n) promises run concurrently and we schedule a callback, when (n) promises complete,
+so we combine them into a single promie with promise.all
  */
  const callFirstPromise = asyncAPICall('https://swapi.co/api/people/2/')
 
@@ -48,3 +51,15 @@ composing Promises
    appendNewData(arrayOfReturnedPromises[0])
    appendNewData(arrayOfReturnedPromises[1])
  })
+
+/*
+Introducing ASYNC functions
+* An async function is a function shortcut which returns a promise
+ */
+const returnPromise = () => {
+  return Promise.resolve('resolved promise')
+}
+
+const returnAsync = async () => {
+  return 'return async promise'
+}
