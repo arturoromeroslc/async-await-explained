@@ -63,3 +63,25 @@ const returnPromise = () => {
 const returnAsync = async () => {
   return 'return async promise'
 }
+
+/*
+Now await it, which is the same as .then
+ */
+const solution = async () => {
+  console.log('Inside of the promise async');
+
+  // call the async calls, which is a new promise.
+  const call2Promise = asyncAPICall('https://swapi.co/api/people/6/');
+  const call3Promise = asyncAPICall('https://swapi.co/api/people/6/');
+
+  // Now await
+  const call2PromiseResponse = await call2Promise;
+  const call3PromiseResponse = await call3Promise;
+
+  //now that we waited we can now use them.
+  appendNewData(call2PromiseResponse);
+  appendNewData(call3PromiseResponse);
+}
+
+// Call the async function
+solution().then(() => console.log('Finished'));
